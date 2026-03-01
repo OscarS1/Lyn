@@ -1,0 +1,465 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Cumple Jocelyn 💖</title>
+
+<style>
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(-45deg,#ff0844,#ff00cc,#2a5298,#ff4e50);
+background-size:400% 400%;
+animation:fondo 15s ease infinite;
+text-align:center;
+color:white;
+overflow-x:hidden;
+}
+
+@keyframes fondo{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+h1{
+font-size:3em;
+margin-top:40px;
+animation:latido 2s infinite;
+}
+
+@keyframes latido{
+0%{transform:scale(1)}
+50%{transform:scale(1.05)}
+100%{transform:scale(1)}
+}
+
+.mensaje{
+max-width:700px;
+margin:auto;
+font-size:1.2em;
+padding:20px;
+}
+
+button{
+background:linear-gradient(45deg,#ff4e50,#ff00cc,#2a5298);
+border:none;
+padding:12px 25px;
+color:white;
+border-radius:30px;
+cursor:pointer;
+margin:15px;
+transition:.3s;
+font-size:16px;
+}
+
+button:hover{
+transform:scale(1.1);
+box-shadow:0 0 15px rgba(255,255,255,0.5);
+}
+
+.galeria{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:white;
+color:#333;
+width:250px;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+transition:.4s;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.card p{
+padding:15px;
+}
+
+.gustos{
+margin:40px auto;
+padding:30px;
+width:80%;
+background:rgba(255,255,255,.15);
+border-radius:20px;
+backdrop-filter:blur(10px);
+}
+
+/* TORTA */
+
+.torta{
+font-size:100px;
+animation:flotar 3s ease-in-out infinite;
+cursor:pointer;
+transition:.3s;
+}
+
+.torta:hover{
+transform:scale(1.2);
+}
+
+@keyframes flotar{
+0%{transform:translateY(0)}
+50%{transform:translateY(-15px)}
+100%{transform:translateY(0)}
+}
+
+.regalo{
+font-size:80px;
+cursor:pointer;
+transition:.4s;
+}
+
+.regalo:hover{
+transform:scale(1.2) rotate(10deg);
+}
+
+#mensajeRegalo{
+opacity:0;
+transition:1s;
+margin-top:15px;
+}
+
+/* CARTA */
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:10;
+animation:fadeIn .4s;
+}
+
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+
+.carta{
+background:#ffffff;
+color:#333;
+padding:35px;
+margin:auto;
+max-width:700px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(255,0,150,0.6);
+max-height:450px;
+overflow-y:auto;
+line-height:1.6;
+font-size:18px;
+animation:zoom .4s;
+}
+
+@keyframes zoom{
+from{transform:scale(.7);opacity:0}
+to{transform:scale(1);opacity:1}
+}
+
+.foto-carta{
+margin:20px 0;
+display:flex;
+justify-content:center;
+}
+
+.foto-carta img{
+width:220px;
+height:220px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 0 20px rgba(255,0,150,0.6);
+}
+
+/* NUEVO ESTILO VENTANA TORTA */
+
+.carta-torta{
+background:linear-gradient(135deg,#ff4e50,#ff00cc);
+color:white;
+padding:40px;
+border-radius:25px;
+box-shadow:
+0 0 20px rgba(255,255,255,0.6),
+0 0 40px rgba(255,0,150,0.8),
+0 0 60px rgba(255,0,200,0.6);
+font-size:42px;
+animation:zoom .4s, brillo 2s infinite alternate;
+}
+
+@keyframes brillo{
+from{box-shadow:0 0 20px rgba(255,255,255,0.6);}
+to{box-shadow:0 0 50px rgba(255,255,255,1);}
+}
+
+/* VIDEO MODAL */
+
+.video-modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.9);
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:999;
+}
+
+.video-modal video{
+max-width:90%;
+max-height:80%;
+border-radius:20px;
+box-shadow:0 0 30px rgba(255,0,150,0.8);
+}
+
+.cerrar-video{
+position:absolute;
+top:20px;
+right:30px;
+font-size:40px;
+color:white;
+cursor:pointer;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+pointer-events:none;
+}   
+
+</style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<h1>🎉 Feliz Cumpleaños Lyn 💖</h1>
+
+<div class="mensaje">
+Eres la mezcla perfecta entre terror emocionante 🖤  
+romance que derrite corazones 💘  
+música que vibra en el alma 🎶  
+ternura infinita como un cocker 🐶  
+y dulzura como el mejor chocolate 🍫✨
+</div>
+
+<div class="torta" onclick="abrirMensajeTorta()">🎂</div>
+
+<button onclick="abrirCarta()">Abrir Carta 💌</button>
+
+<div class="regalo" onclick="abrirRegalo()">🎁</div>
+<div id="mensajeRegalo">Dentro de este regalo hay amor infinito y sueños cumplidos 💖✨</div>
+
+<!-- GALERIA -->
+<section class="galeria">
+
+<div class="card">
+<img src="Recursos/foto4.jpeg">
+<p>Momentos que hacen brillar tu sonrisa ✨</p>
+</div>
+
+<div class="card">
+<img src="Recursos/foto5.jpeg">
+<p>Tan hermosa como una historia de amor 💘</p>
+</div>
+
+<div class="card">
+<img src="Recursos/foto3.jpeg">
+<p>Valiente como en las pelis de terror 🖤🎬</p>
+</div>
+
+<div class="card">
+<img src="Recursos/foto2.jpeg">
+<p>Siempre única y especial 💖</p>
+</div>
+
+</section>
+
+<section class="gustos">
+
+<h2>✨ Las cosas que amas y te hacen única ✨</h2>
+
+<p>🎬 En la penumbra donde el miedo susurra, tus ojos brillan como luna segura, amas el terror que acelera el latido y el romance que deja el alma en suspiro. </p> <p>🎶 Tu mundo se pinta con notas sin fin, cada canción encuentra un lugar en ti, desde el eco suave hasta el grito profundo, tu corazón baila con todo el mundo.</p> <p>😴 Duermes como reina en tu propio palacio, donde los sueños te abrazan despacio, el tiempo se rinde a tu calma infinita, y la noche te cubre, dulce y bendita.</p> <p>🐶 Un cocker te mira con fiel devoción, en sus ojos vive la pura emoción, amor que no habla, pero sabe quedarse, amor que nació solo para amarte.</p> <p>🍫 El chocolate, pequeño tesoro marrón, cura silencioso cualquier desazón, endulza tus días, ilumina tu esencia, como si conociera tu hermosa presencia.</p> <p>✨ Porque eres mezcla de magia y verdad, de sombras, canciones, ternura y bondad, y en cada cosa que amas con el corazón, vive el secreto de tu única canción.</p>
+
+</section>
+
+<!-- VIDEOS ORIGINAL --> <section class="gustos"> <h2>📱 Videos que te identifican ✨</h2> <button onclick="abrirVideo('Recursos/video1.mp4')">▶️ Este refleja tu esencia </button> <button onclick="abrirVideo('Recursos/video2.mp4')">▶️ Este muestra tu vibra única </button> <button onclick="abrirVideo('Recursos/video3.mp4')">▶️ Este simplemente eres tú </button> <button onclick="abrirVideo('Recursos/video4.mp4')">▶️ Bonus mi carnal </button> </section>
+<footer style="margin-top:40px;padding:20px;background:rgba(0,0,0,.3);">
+Hecho con muchísimo cariño para tí, enojona Lyn 💕 
+<br>
+&copy Todos los derechos reservados Oscar Santos 2026
+</footer>
+
+<!-- CARTA -->
+<div class="overlay" id="overlay">
+<div class="carta">
+<h2>💌 Carta Especial 💌</h2>
+<p> Jocelyn 💖<br><br> Las palabras se quedan cortas para expresar lo increíble que eres y lo mucho que significas para mí. Eres una persona maravillosa, llena de luz, alegría y amor. <br><br> Como olvidar aquel 20 de marzo del 2022, cuando nos conocimos y desde entonces has sido una parte fundamental de mi vida. <br><br> No sabia lo importante que searias para mí desde aquel "Tu dúo dinamico está en linea". </p> <div class="foto-carta"> <img src="Recursos/foto1.jpeg"> </div> <p> Te deseo un Feliz cumpleaños lleno de amor, regalos, sonrisas y mucha salud. <br><br> Que sea un año más de vida llena de oportunidades para lograr cada sueño, ahnelo y meta que te has propuesto en tu vida y en tu corazón. <br><br> <strong>FELIZ CUMPLEAÑOS BOT✨</strong> </p>
+<button onclick="cerrarCarta()">Cerrar</button>
+</div>
+</div>
+
+<!-- TORTA MEJORADA -->
+<div class="overlay" id="overlayTorta">
+<div class="carta-torta">
+
+🎉 Felices 20 Lyn 🎉  
+<br><br>
+Eres el mejor regalo que la vida me dio 💖  
+
+<br><br>
+
+<button onclick="cerrarMensajeTorta()">Cerrar</button>
+
+</div>
+</div>
+
+<!-- VIDEO -->
+<div class="video-modal" id="videoModal">
+<span class="cerrar-video" onclick="cerrarVideo()">✖</span>
+<video id="videoPlayer" controls></video>
+</div>
+
+<!-- AUDIO CORREGIDO -->
+<audio id="musica" loop autoplay muted>
+<source src="Recursos/cumple_feliz.mp3">
+</audio>
+
+<script>
+
+const musica=document.getElementById("musica");
+
+/* CORRECCION AUDIO AUTOMATICO */
+
+window.addEventListener("load",()=>{
+
+musica.volume=0.4;
+
+let playPromise=musica.play();
+
+if(playPromise!==undefined){
+
+playPromise.then(()=>{
+musica.muted=false;
+}).catch(()=>{
+document.addEventListener("click",activarMusica,{once:true});
+document.addEventListener("mousemove",activarMusica,{once:true});
+});
+
+}
+
+});
+
+function activarMusica(){
+musica.muted=false;
+musica.play();
+}
+
+/* CARTA */
+
+function abrirCarta(){
+overlay.style.display="flex";
+}
+
+function cerrarCarta(){
+overlay.style.display="none";
+}
+
+/* REGALO */
+
+function abrirRegalo(){
+mensajeRegalo.style.opacity=1;
+}
+
+/* TORTA */
+
+function abrirMensajeTorta(){
+document.getElementById("overlayTorta").style.display="flex";
+}
+
+function cerrarMensajeTorta(){
+document.getElementById("overlayTorta").style.display="none";
+}
+
+/* VIDEO */
+
+const modal=document.getElementById("videoModal");
+const video=document.getElementById("videoPlayer");
+
+function abrirVideo(ruta){
+musica.pause();
+video.src=ruta;
+modal.style.display="flex";
+video.play();
+}
+
+function cerrarVideo(){
+video.pause();
+video.currentTime=0;
+modal.style.display="none";
+musica.play();
+}
+
+/* CONFETTI */
+
+const canvas=document.getElementById("confetti");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let pieces=[];
+
+for(let i=0;i<150;i++){
+pieces.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*6+3,
+color:"hsl("+Math.random()*360+",100%,50%)",
+speed:Math.random()*3+1
+});
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+pieces.forEach(p=>{
+ctx.fillStyle=p.color;
+ctx.fillRect(p.x,p.y,p.r,p.r);
+p.y+=p.speed;
+if(p.y>canvas.height){
+p.y=0;
+}
+});
+
+}
+
+setInterval(draw,20);
+
+</script>
+
+</body>
+</html>
